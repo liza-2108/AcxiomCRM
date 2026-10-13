@@ -1,0 +1,9 @@
+body { background: #f5f7fb; min-height: 100vh; }
+.navbar { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.card { border: 0; border-radius: 12px; box-shadow: 0 2px 12px rgba(20,40,80,.05); }
+.metric-card { height: 100%; border-left: 4px solid #0d6efd; }
+.metric { font-size: 1.8rem; font-weight: 700; color: #172b4d; margin-top: .25rem; }
+.auth-card { max-width: 440px; margin: 4vh auto; border-radius: 16px; }
+.table { background: white; }
+.table thead th { color: #52627a; font-size: .85rem; white-space: nowrap; }
+footer { margin-top: 3rem; }

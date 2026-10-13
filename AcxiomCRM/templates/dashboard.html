@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Dashboard | AcxiomCRM{% endblock %}
+{% block content %}<div class="d-flex justify-content-between align-items-center mb-4"><div><h2 class="mb-1">Dashboard</h2><p class="text-muted mb-0">Your CRM overview</p></div><span class="badge bg-light text-primary">{{ current_user.role }}</span></div>
+<div class="row g-3 mb-4">
+{% for label,key in [('Customers','customers'),('Total Leads','leads'),('Open Leads','open_leads'),('Opportunities','opportunities'),('Open Opportunities','open_opportunities'),('Won','won'),('Lost','lost'),('Pending Follow-ups','pending')] %}
+<div class="col-6 col-md-3"><div class="card metric-card"><div class="card-body"><div class="text-muted small">{{ label }}</div><div class="metric">{{ cards[key] }}</div></div></div></div>{% endfor %}
+<div class="col-12"><div class="card metric-card"><div class="card-body"><div class="text-muted small">Weighted Open Pipeline Value</div><div class="metric">₹{{ "%.2f"|format(cards.pipeline) }}</div></div></div></div></div>
+<div class="row g-3"><div class="col-md-6"><div class="card"><div class="card-body"><h5>Lead Status</h5><canvas id="leadChart"></canvas></div></div></div><div class="col-md-6"><div class="card"><div class="card-body"><h5>Opportunity Pipeline</h5><canvas id="oppChart"></canvas></div></div></div></div>
+{% endblock %}
+{% block scripts %}<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script>
+new Chart(document.getElementById('leadChart'),{type:'doughnut',data:{labels:{{ lead_labels|tojson }},datasets:[{data:{{ lead_values|tojson }}}]}});
+new Chart(document.getElementById('oppChart'),{type:'bar',data:{labels:{{ stage_labels|tojson }},datasets:[{label:'Opportunities',data:{{ stage_values|tojson }}}]}});
+</script>{% endblock %}

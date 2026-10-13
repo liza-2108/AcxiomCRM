@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Reports | AcxiomCRM{% endblock %}
+{% block content %}<h2 class="mb-3">CRM Reports</h2><div class="row g-3">
+{% for title,value in [('Customers',customers),('Leads',leads),('Opportunities',opportunities),('Won Opportunities',won)] %}<div class="col-md-3"><div class="card metric-card"><div class="card-body"><div class="text-muted">{{ title }}</div><div class="metric">{{ value }}</div></div></div></div>{% endfor %}
+<div class="col-md-6"><div class="card"><div class="card-body"><div class="text-muted">Weighted Open Pipeline</div><div class="metric">₹{{ "%.2f"|format(pipeline) }}</div><p class="small text-muted mb-0">Calculated as amount × probability / 100 for open opportunities.</p></div></div></div></div>{% endblock %}
