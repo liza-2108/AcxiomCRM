@@ -18,3 +18,4 @@ instance/crm.db
 # Operating system files
 .DS_Store
 Thumbs.db
+AcxiomCRM/instance/crm.db
